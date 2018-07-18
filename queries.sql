@@ -94,3 +94,34 @@ FROM Song
 SELECT song.title, max(song.songlength), album.title
 FROM SONG
 JOIN Album on album.albumid = song.albumid
+
+-- 12.  Return all artist names and their genre
+
+SELECT artist.artistname, genre.label
+FROM Album
+JOIN Genre on genre.genreid = album.genreid
+JOIN Artist on artist.artistid = album.artistid
+
+-- 13.  Return all artist names in the Rap genre
+
+SELECT artist.artistname, genre.label
+FROM Album
+JOIN Genre on genre.genreid = album.genreid
+JOIN Artist on artist.artistid = album.artistid
+WHERE genre.label = "Rap"
+
+-- 14.  Return all artist names and album titles in the Rap genre
+
+SELECT artist.artistname, genre.label, album.title
+FROM Album
+JOIN Genre on genre.genreid = album.genreid
+JOIN Artist on artist.artistid = album.artistid
+WHERE genre.label = "Rap"
+
+
+-- 15. Use group_concat to return all artist names that belong to the Columbia label
+
+SELECT album.label,  group_concat(artist.artistname)
+FROM Album
+JOIN  Artist on artist.artistid = album.artistid
+WHERE album.label = "Columbia"
