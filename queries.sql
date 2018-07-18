@@ -78,5 +78,19 @@ order by genre.label
 -- 9.   Using MAX() function, write a select statement to find the album
         -- with the longest duration. The result should display the album
         -- title and the duration.
+
 SELECT album.title, max(album.albumlength)
 FROM Album
+
+-- 10    Using MAX() function, write a select statement to find the song
+--       with the longest duration. The result should display the song title
+--       and the duration.
+
+SELECT song.title, max(song.songlength)
+FROM Song
+
+-- 11.  Modify the previous query to also display the title of the album.
+
+SELECT song.title, max(song.songlength), album.title
+FROM SONG
+JOIN Album on album.albumid = song.albumid
