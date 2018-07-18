@@ -48,5 +48,35 @@ WHERE song.artistid = album.artistid
 AND song.artistid = artist.artistid
 AND artist.artistname = "Fistikuffs"
 
--- 6. Write a SELECT statement to display how many songs exist for each album.
--- You'll need to use the COUNT() function and the GROUP BY keyword sequence.
+-- 6.   Write a SELECT statement to display how many songs exist for each album.
+--      You'll need to use the COUNT() function and the GROUP BY keyword sequence.
+
+SELECT count(), album.title
+FROM Album
+JOIN Song on song.albumid = album.albumid
+group by album.albumid
+order by album.title
+
+-- 7.   Write a SELECT statement to display how many songs exist for each artist.
+--      You'll need to use the COUNT() function and the GROUP BY keyword sequence.
+
+SELECT count(), artist.artistname
+FROM Artist
+JOIN Song on song.artistid = artist.artistid
+group by artist.artistid
+order by artist.artistname
+
+-- 8.   Write a SELECT statement to display how many songs exist for each genre.
+--      You'll need to use the COUNT() function and the GROUP BY keyword sequence.
+
+SELECT count(), genre.label
+FROM Genre
+JOIN Song on song.genreid = genre.genreid
+group by genre.genreid
+order by genre.label
+
+-- 9.   Using MAX() function, write a select statement to find the album
+        -- with the longest duration. The result should display the album
+        -- title and the duration.
+SELECT album.title, max(album.albumlength)
+FROM Album
